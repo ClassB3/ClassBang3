@@ -13,6 +13,7 @@ import com.example.cb.SignUpActivity;
 import com.example.cb.StudentCodeActivity;
 import com.example.cb.account.Account;
 import com.example.cb.account.AccountLog;
+import com.example.cb.account.Saving;
 import com.example.cb.info.ClassInfo;
 import com.example.cb.info.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -363,6 +365,39 @@ public class FireStoreService
 
         }
 
+        public static void enrollSaving(Context context, Saving saving)
+        {
+            String document = String.valueOf(saving.getNumber()+saving.getName());
+
+            DocumentReference documentReference = db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                    "/"+"INFO/Banking/SavingsAccount")
+                    .document(document);
+
+            documentReference
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                        {
+                            if (task.getResult().exists())
+                            {
+                                Toast.makeText(context,"Already enrolled!",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                documentReference.set(saving);
+                                addAccountLog(saving, new AccountLog(true,0), saving.getNumber(), saving.getName());
+                            }
+
+                        }
+                    });
+        }
+
+        public static void seeSavingState()
+        {
+            
+        }
     }
 
     public static class Investment
