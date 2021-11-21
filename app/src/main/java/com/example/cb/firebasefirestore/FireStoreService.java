@@ -25,7 +25,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -394,9 +397,38 @@ public class FireStoreService
                     });
         }
 
-        public static void seeSavingState()
+        public static void seeSavingState(FireStoreGetCallback<Saving> callback)
         {
-            
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                    "/"+"INFO/Banking/SavingsAccount")
+                    .whereEqualTo("closeOrNot",false)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                for (QueryDocumentSnapshot document: task.getResult())
+                                {
+                                    try
+                                    {
+                                        callback.callback(document.toObject(Saving.class));
+                                    }
+                                    catch (ParseException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    });
         }
     }
 
