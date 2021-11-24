@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_loading.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_main.xml" value="0.2140625" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_main_screen.xml" value="0.153125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_saving_state.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_saving_state_row_item.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_sign_up.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_student_code.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_test.xml" value="0.22146739130434784" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_work_bank_teller.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_work_bank_teller_dialog_enter_amount.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_work_bank_teller_dialog_enter_number.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/CB/app/src/main/res/layout/activity_work_bank_teller_dialog_select_saving.xml" value="0.24818840579710144" />
       </map>
     </option>
   </component>

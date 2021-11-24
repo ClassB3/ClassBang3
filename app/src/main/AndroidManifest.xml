@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CB">
         <activity
+            android:name=".work.SavingClosingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".work.TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".work.WorkActivity_BankTeller"
+            android:exported="false" />
+        <activity
+            android:name=".work.SavingStateActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainScreenActivity"
             android:exported="false" />
         <activity

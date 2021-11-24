@@ -19,6 +19,7 @@ public class Saving extends Account implements Serializable
     private String name;
     private String number;
 
+    public Saving() {super("SavingsAccount");}
     public Saving(String accountType)
     {
         super(accountType);
@@ -78,5 +79,22 @@ public class Saving extends Account implements Serializable
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "Saving{" +
+                "type='" + type + '\'' +
+                ", rate=" + rate +
+                ", amount=" + amount +
+                ", closeOrNot=" + closeOrNot +
+                ", registrationDate='" + registrationDate + '\'' +
+                ", dueDate='" + dueDate + '\'' +
+                ", dDay='" + dDay + '\'' +
+                ", totalTerm=" + totalTerm +
+                ", period=" + period +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                '}';
     }
 }

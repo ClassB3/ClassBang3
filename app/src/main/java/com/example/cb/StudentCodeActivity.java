@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.cb.firebasefirestore.FireStoreService;
 import com.example.cb.info.Student;
 
 public class StudentCodeActivity extends AppCompatActivity
@@ -37,7 +38,7 @@ public class StudentCodeActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-
+                FireStoreService.Auth.checkStudentCode(context,studentCode_EditText.getText().toString(),null);
             }
         });
     }

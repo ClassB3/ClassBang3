@@ -9,7 +9,7 @@ import java.util.List;
 public class ClassInfo
 {
     private static ClassInfo instance = new ClassInfo();
-    private int theNumberOfStudent=5;
+    private int theNumberOfStudent;
 
     private List<String> listOfSavingProduct= new ArrayList<>();
     private List<InvestmentGoods> listOfInvestmentGoods = new ArrayList<>();
