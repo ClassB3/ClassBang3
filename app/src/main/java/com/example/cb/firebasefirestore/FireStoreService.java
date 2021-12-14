@@ -8,13 +8,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.cb.LoginActivity;
-import com.example.cb.MainScreenActivity;
+import com.example.cb.MainLoadingActivity;
 import com.example.cb.SignUpActivity;
 import com.example.cb.StudentCodeActivity;
 import com.example.cb.account.Account;
 import com.example.cb.account.AccountLog;
 import com.example.cb.account.Saving;
 import com.example.cb.info.ClassInfo;
+import com.example.cb.info.Notice;
 import com.example.cb.info.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -81,8 +82,10 @@ public class FireStoreService
                                                         student.setRegion(document_studentCode.get("Region").toString());
                                                         student.setSchool(document_studentCode.get("School").toString());
                                                         student.setGrade(document_studentCode.get("Grade").toString());
+                                                        student.setGroup(document_studentCode.get("Group").toString());
                                                         student.setName(document_studentCode.get("Name").toString());
                                                         student.setNumber(document_studentCode.get("Number").toString());
+
                                                         student.setJob("무직");
                                                         student.setCreditScore(400);
 
@@ -123,6 +126,7 @@ public class FireStoreService
 
                                if (email != "" && password.length() >=6)
                                {
+
                                    getJobInfo();
                                    signIn(context, email, password);
                                }
@@ -171,7 +175,7 @@ public class FireStoreService
                                 if (user.isEmailVerified())
                                 {
                                     student.setEmail(user.getEmail());
-                                    context.startActivity(new Intent(context, MainScreenActivity.class));
+                                    context.startActivity(new Intent(context, MainLoadingActivity.class));
                                 }
                                 else
                                 {
@@ -230,6 +234,11 @@ public class FireStoreService
 
         }
 
+        public static void signOut()
+        {
+            mAuth.signOut();
+        }
+
         private static void registerEmail(String email)
         {
             db.collection("IntegratedManagement/"+student.getClassCode()+"/StudentList")
@@ -281,8 +290,6 @@ public class FireStoreService
                         {
                             if (task.isSuccessful())
                             {
-                                Log.d("??get", task.getResult().get("StudentMap").toString());
-                                Log.d("??get", task.getResult().get("TheNumberOfStudent").toString());
                                 HashMap<String,String> map = (HashMap<String, String>) task.getResult().get("StudentMap");
                                 classInfo.setStudentMap(map);
                                 classInfo.setTheNumberOfStudent(Integer.valueOf(task.getResult().get("TheNumberOfStudent").toString()));
@@ -293,6 +300,60 @@ public class FireStoreService
                             }
                         }
                     });
+
+
+        }
+
+        public static void getTaxInfo()
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+"/INFO")
+                    .document("Tax")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                        {
+                            Log.d("??",task.getResult().get("balance").toString());
+                            Log.d("??",task.getResult().get("formerbalance").toString());
+                            classInfo.setTaxBalance(Integer.valueOf(task.getResult().get("balance").toString()));
+                            classInfo.setFormerTaxBalance(Integer.valueOf(task.getResult().get("formerbalance").toString()));
+                        }
+                    });
+        }
+
+        public static void getNoticeList(FireStoreGetCallback<Notice> callback)
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                    "/"+"INFO/Notice/NoticeList")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                for (QueryDocumentSnapshot document: task.getResult())
+                                {
+                                    try
+                                    {
+                                        callback.callback(document.toObject(Notice.class));
+                                    }
+                                    catch (ParseException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    });
+
         }
     }
 
@@ -309,16 +370,16 @@ public class FireStoreService
                             .document(student.getNumber()+student.getName())
                             .set(account);
 
-                    addAccountLog(account, new AccountLog(true,0), student.getNumber(), student.getName());
+                    addAccountLog(account.getAccountType(), new AccountLog(true,0), student.getNumber(), student.getName());
                     break;
 
                 default:
             }
         }
 
-        public static void addAccountLog(Account account, AccountLog log, String number, String name)
+        public static void addAccountLog(String accountType, AccountLog log, String number, String name)
         {
-            switch (account.getAccountType())
+            switch (accountType)
             {
                 case "OrdinaryAccount":
                     db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
@@ -339,9 +400,84 @@ public class FireStoreService
             }
         }
 
-        public static void deposit(Account account, double amount, String number, String name)
+        public static void getLogHistory(FireStoreGetCallback<AccountLog> callback, String accountType)
         {
-            switch (account.getAccountType())
+            switch (accountType)
+            {
+                case "OrdinaryAccount":
+                    db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                            "/"+"INFO/Banking/OrdinaryAccount/"+student.getNumber()+student.getName()+"/Logs")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                            {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        for (QueryDocumentSnapshot document: task.getResult())
+                                        {
+                                            try
+                                            {
+                                                callback.callback(document.toObject(AccountLog.class));
+                                            }
+                                            catch (ParseException e)
+                                            {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                            });
+
+                    break;
+
+                case "SavingsAccount":
+                    db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                            "/"+"INFO/Banking/SavingsAccount/"+student.getNumber()+student.getName()+"/Logs")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                            {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        for (QueryDocumentSnapshot document: task.getResult())
+                                        {
+                                            try
+                                            {
+                                                callback.callback(document.toObject(AccountLog.class));
+                                            }
+                                            catch (ParseException e)
+                                            {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
+                            });
+
+                    break;
+
+                default:
+            }
+
+        }
+
+        public static void deposit(String accountType, double amount, String number, String name)
+        {
+            switch (accountType)
             {
                 case "OrdinaryAccount":
 
@@ -350,6 +486,7 @@ public class FireStoreService
                             .document(number+name)
                             .update("balance", FieldValue.increment(amount));
 
+                    addAccountLog(accountType, new AccountLog(true, amount),number,name);
                     break;
                 default:
 
@@ -357,9 +494,9 @@ public class FireStoreService
             }
         }
 
-        public static void withdraw(Account account, double amount, String number, String name)
+        public static void withdraw(String accountType, double amount, String number, String name)
         {
-            switch (account.getAccountType())
+            switch (accountType)
             {
                 case "OrdinaryAccount":
 
@@ -367,13 +504,31 @@ public class FireStoreService
                             "/"+"INFO/Banking/OrdinaryAccount")
                             .document(number+name)
                             .update("balance", FieldValue.increment(-amount));
-
+                    addAccountLog(accountType, new AccountLog(false, amount),number,name);
                     break;
                 default:
 
 
             }
 
+        }
+
+        public static void getBalance()
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                    "/"+"INFO/Banking/OrdinaryAccount")
+                    .document(student.getNumber()+student.getName())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                        {
+                            Log.d("??here", student.getNumber()+student.getName());
+                            if (task.isSuccessful())
+                                student.setBalance(Double.valueOf(task.getResult().get("balance").toString()));
+                        }
+                    });
         }
 
         public static void enrollSaving(Context context, Saving saving)
@@ -398,7 +553,7 @@ public class FireStoreService
                             else
                             {
                                 documentReference.set(saving);
-                                addAccountLog(saving, new AccountLog(true,0), saving.getNumber(), saving.getName());
+                                addAccountLog("SavingAccount", new AccountLog(true,0), saving.getNumber(), saving.getName());
                             }
 
                         }
@@ -410,6 +565,41 @@ public class FireStoreService
             db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
                     "/"+"INFO/Banking/SavingsAccount")
                     .whereEqualTo("closeOrNot",false)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                for (QueryDocumentSnapshot document: task.getResult())
+                                {
+                                    try
+                                    {
+                                        callback.callback(document.toObject(Saving.class));
+                                    }
+                                    catch (ParseException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    });
+        }
+
+        public static void seeUserSavingState(FireStoreGetCallback<Saving> callback, String number, String name)
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+
+                    "/"+"INFO/Banking/SavingsAccount")
+                    .whereEqualTo("number", number)
+                    .whereEqualTo("name",name)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
                     {
@@ -534,6 +724,29 @@ public class FireStoreService
 
     public static class CreditRating
     {
+
+        public static void rateCreditScore(int score, String number, String name)
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+"/INFO/Student/StudentList/")
+                    .document(number+name)
+                    .update("creditScore",FieldValue.increment(score));
+        }
+
+        public static void getCreditScore()
+        {
+            db.collection(student.getRegion()+"/"+student.getSchool()+"/"+student.getGrade()+"/"+student.getClassCode()+"/INFO/Student/StudentList/")
+                    .document(student.getNumber()+student.getName())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                        {
+                            student.setCreditScore(Integer.valueOf(task.getResult().get("creditScore").toString()));
+                        }
+                    });
+
+        }
 
     }
 }

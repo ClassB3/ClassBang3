@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CB">
         <activity
+            android:name=".work.WorkActivity_CreditRatingStaff"
+            android:exported="false" />
+        <activity
+            android:name=".account.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.AccountLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainLoadingActivity"
+            android:exported="false" />
+        <activity
             android:name=".work.SavingClosingActivity"
             android:exported="false" />
         <activity

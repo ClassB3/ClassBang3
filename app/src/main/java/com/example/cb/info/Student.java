@@ -7,6 +7,7 @@ public class Student
     private String region;
     private String school;
     private String grade;
+    private String group;
 
     private String classCode;
     private String studentCode;
@@ -16,6 +17,8 @@ public class Student
 
     private String job;
     private int creditScore;
+
+    private double balance;
 
     private Student() {}
 
@@ -35,6 +38,7 @@ public class Student
     public String getRegion() { return instance.region; }
     public String getSchool() { return instance.school; }
     public String getGrade() { return instance.grade; }
+    public String getGroup() { return group; }
     public String getClassCode() { return instance.classCode; }
     public String getStudentCode() { return instance.studentCode; }
     public String getEmail() { return instance.email; }
@@ -42,6 +46,7 @@ public class Student
     public String getNumber() { return instance.number; }
     public String getJob() { return instance.job; }
     public int getCreditScore() { return instance.creditScore; }
+    public double getBalance() { return  instance.balance ; }
 
     public void setRegion(String region) {
         instance.region = region;
@@ -54,6 +59,8 @@ public class Student
     public void setGrade(String grade) {
         instance.grade = grade;
     }
+
+    public void setGroup(String group) { instance.group = group; }
 
     public void setClassCode(String classCode) {
         instance.classCode = classCode;
@@ -82,4 +89,6 @@ public class Student
     public void setCreditScore(int creditScore) {
         instance.creditScore = creditScore;
     }
+
+    public void setBalance(double balance) { instance.balance = balance; }
 }

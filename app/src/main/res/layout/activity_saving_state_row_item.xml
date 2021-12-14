@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@drawable/notice_design02">
 
     <TextView
         android:id="@+id/SavingStateActivity_Row_Item_Number"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="10sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/bmjua"
         android:layout_weight="1">
 
     </TextView>
@@ -17,7 +19,8 @@
         android:id="@+id/SavingStateActivity_Row_Item_Name"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="10sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/bmjua"
         android:layout_weight="2">
 
     </TextView>
@@ -26,7 +29,8 @@
         android:id="@+id/SavingStateActivity_Row_Item_SavingType"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="10sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/bmjua"
         android:layout_weight="2">
 
     </TextView>
@@ -35,7 +39,8 @@
         android:id="@+id/SavingStateActivity_Row_Item_Dday"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="10sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/bmjua"
         android:layout_weight="1">
 
     </TextView>
@@ -44,7 +49,8 @@
         android:id="@+id/SavingStateActivity_Row_Item_DueDate"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:textSize="10sp"
+        android:textSize="13sp"
+        android:fontFamily="@font/bmjua"
         android:layout_weight="3">
 
     </TextView>

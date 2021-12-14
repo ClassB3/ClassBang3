@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.cb.R;
+import com.example.cb.account.Account;
 import com.example.cb.account.Saving;
 import com.example.cb.firebasefirestore.FireStoreGetCallback;
 import com.example.cb.firebasefirestore.FireStoreService;
@@ -40,7 +41,13 @@ public class WorkActivity_BankTeller extends AppCompatActivity implements View.O
 
     private Button savingRegistration_Btn;
     private Button savingList_Btn;
-    private Button savingClosing_Btn;
+
+
+    private Button deposit_Btn;
+    private Button withdraw_Btn;
+    private EditText amount_Edit;
+    private EditText number_Edit;
+    private EditText name_Edit;
 
     private EditText savingAmount_Dialog_Edit;
 
@@ -69,14 +76,26 @@ public class WorkActivity_BankTeller extends AppCompatActivity implements View.O
 
         savingRegistration_Btn= findViewById(R.id.WorkActivity_BankTeller_Btn_SavingRegistration);
         savingList_Btn= findViewById(R.id.WorkActivity_BankTeller_Btn_SavingList);
-        savingClosing_Btn=findViewById(R.id.WorkActivity_BankTeller_Btn_SavingClosing);
+        //savingClosing_Btn=findViewById(R.id.WorkActivity_BankTeller_Btn_SavingClosing);
 
         savingRegistration_Btn.setOnClickListener(this);
         savingList_Btn.setOnClickListener(this);
-        savingClosing_Btn.setOnClickListener(this);
+
 
         savingList=new ArrayList<>();
         savingClosingList=new ArrayList<>();
+
+
+        deposit_Btn = findViewById(R.id.WorkActivity_BankTeller_Btn_Deposit);
+        withdraw_Btn = findViewById(R.id.WorkActivity_BankTeller_Btn_Withdraw);
+        amount_Edit = findViewById(R.id.WorkActivity_BankTeller_Edit_Amount);
+        number_Edit = findViewById(R.id.WorkActivity_BankTeller_Edit_Number);
+        name_Edit = findViewById(R.id.WorkActivity_BankTeller_Edit_Name);
+
+        deposit_Btn.setOnClickListener(this);
+        withdraw_Btn.setOnClickListener(this);
+        amount_Edit.setOnClickListener(this);
+
 
         FireStoreService.Bank.getListOfSavingProduct();
     }
@@ -125,8 +144,15 @@ public class WorkActivity_BankTeller extends AppCompatActivity implements View.O
             case R.id.WorkActivity_BankTeller_Btn_SavingList:
                     startActivity(new Intent(context,SavingStateActivity.class).putExtra("savingList",savingList));
                 break;
-            case R.id.WorkActivity_BankTeller_Btn_SavingClosing:
-                //startActivity(new Intent(context,));
+            case R.id.WorkActivity_BankTeller_Btn_Deposit:
+                FireStoreService.Bank.deposit("OrdinaryAccount",Double.valueOf(amount_Edit.getText().toString()),
+                        number_Edit.getText().toString(), name_Edit.getText().toString());
+
+                break;
+            case R.id.WorkActivity_BankTeller_Btn_Withdraw:
+                FireStoreService.Bank.withdraw("OrdinaryAccount",Double.valueOf(amount_Edit.getText().toString()),
+                        number_Edit.getText().toString(), name_Edit.getText().toString());
+
                 break;
         }
     }

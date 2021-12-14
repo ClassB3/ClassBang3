@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/notice_design02">
+
+    <TextView
+        android:id="@+id/AccountLogActivity_Row_Item_Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp"
+        android:layout_weight="2.5"
+        android:fontFamily="@font/bmjua">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/AccountLogActivity_Row_Item_Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="18sp"
+        android:layout_weight="2.5"
+        android:fontFamily="@font/bmjua">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/AccountLogActivity_Row_Item_DepositOrNot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:fontFamily="@font/bmjua">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/AccountLogActivity_Row_Item_Amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp"
+        android:layout_weight="1.5"
+        android:fontFamily="@font/bmjua">
+
+    </TextView>
+
+
+
+</LinearLayout>

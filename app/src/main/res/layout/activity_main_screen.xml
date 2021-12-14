@@ -5,29 +5,393 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F0FFFF"
     tools:context=".MainScreenActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="우리 반"
+            android:textSize="27sp"
+            android:fontFamily="@font/bmjua"
+            >
+
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/MainScreenActivity_Btn_Logout"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="로그아웃"
+            android:fontFamily="@font/bmjua"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="150dp"
+            android:background="@drawable/button_design01">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/MainScreenActivity_Layout_IDCard"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        android:background="@drawable/linearlayout_rounding"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            >
+
+            <TextView
+                android:text="국민등록증"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_Name"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_Job"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:textSize="15sp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_School"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_GradeClassNumber"
+                android:textSize="20sp"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+
+
+
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="85dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/MainScreenActivity_Image_ProfileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                >
+
+            </ImageView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/MainScreenActivity_Text_Job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/bmjua"
         android:gravity="center"
+        android:text="업무하기"
         android:textAlignment="center"
-        android:layout_marginTop="200dp">
+        android:textSize="20sp">
 
     </TextView>
 
-    <Button
-        android:id="@+id/MainScreenActivity_Btn_Work"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WORK"
-        android:layout_gravity="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/workview_design"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/MainScreenActivity_Image_JobIcon"
+            android:src="@drawable/bankicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/MainScreenActivity_Text_JobInWork"
+            android:layout_gravity="center"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/bmjua"
+            >
+
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/MainScreenActivity_Btn_Work"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text=">"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:background="@drawable/button_rounding"
+            android:layout_marginLeft="48dp">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:layout_margin="5dp">
+        android:text="내 통장 현황"
+        android:textSize="20sp"
+        android:fontFamily="@font/bmjua"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
 
-    </Button>
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/accountview_design"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/MainScreenActivity_Image_Account"
+            android:src="@drawable/accounticon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/MainScreenActivity_Text_AccountAmount"
+            android:layout_gravity="center"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/bmjua"
+            >
+
+        </TextView>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/MainScreenActivity_Btn_Account"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text=">"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:background="@drawable/button_rounding"
+            android:layout_marginLeft="3dp">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="우리반 세금"
+        android:textSize="20sp"
+        android:fontFamily="@font/bmjua"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+    </TextView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:background="@drawable/taxview_design01"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <ImageView
+            android:id="@+id/MainScreenActivity_Image_TaxIcon"
+            android:src="@drawable/taxicon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            >
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_TodayTaxAmount"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_TaxAmountChange"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+        </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/MainScreenActivity_Btn_Tax"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:text=">"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:background="@drawable/button_rounding"
+            android:layout_marginLeft="3dp">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="알립니다"
+        android:textSize="20sp"
+        android:fontFamily="@font/bmjua"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/MainScreenActivity_Recyclerview"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

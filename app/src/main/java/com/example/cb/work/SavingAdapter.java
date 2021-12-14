@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cb.R;
 import com.example.cb.account.Saving;
+import com.example.cb.firebasefirestore.FireStoreService;
 
 import java.util.ArrayList;
 
@@ -31,17 +32,13 @@ public class SavingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View view;
-        /*
-        if (context instanceof SavingStateActivity)
-        {
-            view= LayoutInflater.from(parent.getContext())
+
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_saving_state_row_item,parent,false);
-        return new SavingViewHolder(view,context);
-        }
-        */
-        view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_saving_state_row_item,parent,false);
-        return new SavingViewHolder(view,context);
+
+        return new SavingViewHolder(view, context);
+
+
     }
 
     @Override
@@ -57,16 +54,8 @@ public class SavingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         viewHolder.getSaving_Text().setText(list.get(position).getType());
         viewHolder.getdDay_Text().setText(list.get(position).getdDay());
         viewHolder.getDueDate_Text().setText(list.get(position).getDueDate());
-        /*
-        if (context instanceof SavingStateActivity)
-        {
-            viewHolder.getNumber_Text().setText(list.get(position).getNumber());
-        viewHolder.getName_Text().setText(list.get(position).getName());
-        viewHolder.getSaving_Text().setText(list.get(position).getType());
-        viewHolder.getdDay_Text().setText(list.get(position).getdDay());
-        viewHolder.getDueDate_Text().setText(list.get(position).getDueDate());
-        }
-        */
+
+
     }
 
     @Override
@@ -82,26 +71,18 @@ public class SavingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView saving_Text;
         private TextView dDay_Text;
         private TextView dueDate_Text;
-        private Button closing_Btn;
+
 
         private SavingViewHolder(@NonNull View itemView,Context context)
         {
             super(itemView);
-            /*
-            if (context instanceof SavingStateActivity)
-            {
-                number_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Number);
-                name_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Name);
-                saving_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_SavingType);
-                dDay_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Dday);
-                dueDate_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_DueDate);
-            }*/
 
             number_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Number);
             name_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Name);
             saving_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_SavingType);
             dDay_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_Dday);
             dueDate_Text=(TextView) itemView.findViewById(R.id.SavingStateActivity_Row_Item_DueDate);
+
         }
 
         public TextView getNumber_Text() {
@@ -123,5 +104,7 @@ public class SavingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public TextView getDueDate_Text() {
             return dueDate_Text;
         }
+
+
     }
 }
