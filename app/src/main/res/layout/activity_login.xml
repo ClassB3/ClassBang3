@@ -32,7 +32,7 @@
         android:inputType="number"
         android:hint="학생코드"
         android:fontFamily="@font/bmjua"
-        android:textColorHint="#848484"
+        android:textColorHint="#A4A4A4"
         >
 
     </EditText>
@@ -47,10 +47,11 @@
         android:textAlignment="center"
         android:layout_margin="5dp"
         android:inputType="numberPassword"
+
         android:hint="비밀번호"
         android:textColor="@color/black"
         android:fontFamily="@font/bmjua"
-        android:textColorHint="#848484"
+        android:textColorHint="#A4A4A4"
         >
 
     </EditText>

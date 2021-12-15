@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="고객 정보 입력"
+        android:fontFamily="@font/fonts"
         android:padding="20dp">
 
     </TextView>
@@ -22,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="번호 선택"
+            android:fontFamily="@font/fonts"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"

@@ -37,8 +37,8 @@ public class CreditScoreAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position)
     {
         final CreditScoreViewHolder viewHolder=(CreditScoreViewHolder)holder;
-        viewHolder.getNumber_Text().setText(String.valueOf(position+1));
-        viewHolder.getName_Text().setText(list.get(position));
+        viewHolder.getNumber_Text().setText("출석번호:"+String.valueOf(position+1));
+        viewHolder.getName_Text().setText("이름:"+list.get(position));
     }
 
     @Override

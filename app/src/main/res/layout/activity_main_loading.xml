@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainLoadingActivity"
+    android:background="@drawable/loading"
     >
 
     <TextView
@@ -16,7 +17,8 @@
         android:fontFamily="@font/bmjua"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_margin="140dp">
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="140dp">
 
     </TextView>
 

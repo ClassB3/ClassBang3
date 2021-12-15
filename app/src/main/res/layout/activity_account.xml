@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#D8F6CE"
+    android:background="#F5F6CE"
     tools:context=".account.AccountActivity">
 
     <LinearLayout
@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="1"
-        android:background="#D8F6CE"
-        android:layout_margin="10dp">
+        android:background="#F5F6CE"
+        >
 
 
 
@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:fontFamily="@font/bmjua"
-            android:layout_gravity="center"
-            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="30dp"
             android:textColor="@color/black"
             android:background="@drawable/logview_design01"
             >
@@ -68,7 +68,7 @@
                 android:id="@+id/AccountActivity_Recyclerview01"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
+                android:layout_height="250dp"
                 android:scrollbars="vertical"
                 >
 
@@ -85,6 +85,7 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/bmjua"
+            android:background="#F4FA58"
             >
 
         </TextView>

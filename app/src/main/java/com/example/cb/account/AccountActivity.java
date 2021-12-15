@@ -66,6 +66,6 @@ public class AccountActivity extends AppCompatActivity
         name_TextView=findViewById(R.id.AccountActivity_Text_Name);
         name_TextView.setText(student.getName()+"의 계좌 내역");
         balance01_TextView=findViewById(R.id.AccountActivity_Text_Balance01);
-        balance01_TextView.setText(String.valueOf(student.getBalance()));
+        balance01_TextView.setText("잔액: "+student.getBalance());
     }
 }

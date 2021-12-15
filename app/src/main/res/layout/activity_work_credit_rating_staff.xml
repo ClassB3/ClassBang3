@@ -5,13 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".work.WorkActivity_CreditRatingStaff">
+    tools:context=".work.WorkActivity_CreditRatingStaff"
+    android:background="#B6D48A">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="신용평가 점수 매기기"
+        android:gravity="center"
+        android:fontFamily="@font/bmjua"
+        android:textSize="30sp"
+        android:background="@drawable/logview_design03">
+
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="50dp">
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/WorkActivity_CreditRatingStaff_RecyclerView"

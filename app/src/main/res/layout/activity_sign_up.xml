@@ -17,6 +17,7 @@
         android:textAlignment="center"
         android:layout_marginTop="300dp"
         android:textColor="#00C696"
+        android:fontFamily="@font/bmjua"
         >
     </TextView>
 

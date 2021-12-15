@@ -49,6 +49,7 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
     private TextView name_TextView;
     private TextView school_TextView;
     private TextView job_TextView;
+    private TextView creditScore_TextView;
 
     private Button logout_Btn;
 
@@ -116,6 +117,8 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
         job_TextView.setText(student.getJob());
         school_TextView=findViewById(R.id.MainScreenActivity_Text_School);
         school_TextView.setText(student.getSchool());
+        creditScore_TextView=findViewById(R.id.MainScreenActivity_Text_CreditScore);
+        creditScore_TextView.setText("신용점수:"+String.valueOf(student.getCreditScore()));
 
         logout_Btn=findViewById(R.id.MainScreenActivity_Btn_Logout);
         logout_Btn.setOnClickListener(this);
@@ -163,7 +166,10 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 profile_ImageView.setImageResource(R.drawable.profile03);
                 break;
             case "1912020028":
-                profile_ImageView.setImageResource(R.drawable.profile01);
+                profile_ImageView.setImageResource(R.drawable.profile04);
+                break;
+            case "1912020029":
+                profile_ImageView.setImageResource(R.drawable.profile05);
                 break;
             default:
         }

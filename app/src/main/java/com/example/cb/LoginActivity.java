@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity
         studentCode_EditText=findViewById(R.id.loginactivity_edittext_studentcode);
         password_EditText=findViewById(R.id.loginactivity_edittext_password);
 
+
         login_Btn=findViewById(R.id.loginactivity_button_login);
         signUp_Btn=findViewById(R.id.loginactivity_button_signup);
 

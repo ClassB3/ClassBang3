@@ -90,7 +90,7 @@
                 android:id="@+id/MainScreenActivity_Text_Job"
                 android:layout_width="100dp"
                 android:layout_height="25dp"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/bmjua"
                 >
@@ -110,6 +110,16 @@
             <TextView
                 android:id="@+id/MainScreenActivity_Text_GradeClassNumber"
                 android:textSize="20sp"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:fontFamily="@font/bmjua"
+                >
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/MainScreenActivity_Text_CreditScore"
+                android:textSize="15sp"
                 android:layout_width="120dp"
                 android:layout_height="25dp"
                 android:fontFamily="@font/bmjua"
@@ -184,7 +194,7 @@
         <TextView
             android:id="@+id/MainScreenActivity_Text_JobInWork"
             android:layout_gravity="center"
-            android:layout_width="140dp"
+            android:layout_width="190dp"
             android:layout_height="30dp"
             android:layout_marginLeft="12dp"
             android:textSize="20sp"
@@ -204,7 +214,7 @@
             android:gravity="center"
             android:textAlignment="center"
             android:background="@drawable/button_rounding"
-            android:layout_marginLeft="48dp">
+            android:layout_marginLeft="0dp">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -341,20 +351,7 @@
 
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/MainScreenActivity_Btn_Tax"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:text=">"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:background="@drawable/button_rounding"
-            android:layout_marginLeft="3dp">
 
-        </androidx.appcompat.widget.AppCompatButton>
 
     </LinearLayout>
 
